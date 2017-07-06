@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script>
+for(;;){
+
+var sentence = prompt("Введіть речення");
+
+function findTheLongestWord(str) {
+  var strSplit = str.split(' ');
+  var theLongestWord = 0;
+  for(var i = 0; i < strSplit.length; i++){
+    if(strSplit[i].length > theLongestWord){
+	theLongestWord = strSplit[i].length;
+     }
+  }
+  return alert(theLongestWord);
+}
+findTheLongestWord(sentence);
+
+
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!Doctype HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script>
+for(;;){
+
+var str = prompt("Введіть рядок");
+function changeDirection(str) {
+	var result = "";
+		for(var i = str.length - 1; i >= 0; i--) {
+			result = result + str[i];
+		}
+  return alert(result);
+}
+changeDirection(str);
+}
+</script>
+</body>
+</html>

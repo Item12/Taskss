@@ -1,0 +1,26 @@
+<!Doctype HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script>
+for(;;){
+
+var n = prompt("Введіть n-число послідовності Фібоначчі");
+function fibonachi(n) {
+  var a = 1, b = 1;
+  for (var i = 3; i <= n; i++) {
+    var c = a + b;
+    a = b;
+    b = c;
+  }
+  return alert(b);
+}
+
+fibonachi(n);
+}
+</script>
+</body>
+</html>

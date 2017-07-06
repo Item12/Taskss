@@ -1,0 +1,30 @@
+<!Doctype HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script>
+for(;;){
+function checkForSubstring(){
+var str = prompt("Введіть початковий рядок");
+var target = prompt("Введіть шуканий підрядок");
+
+var pos = 0;
+var count = 0;
+
+while (true) {
+  var foundPos = str.indexOf(target, pos);
+  if (foundPos == -1) {
+  	break;}
+  count++;
+  pos = foundPos + 1; 
+}
+return alert(count);
+}
+checkForSubstring();
+}
+</script>
+</body>
+</html>
