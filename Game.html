@@ -1,0 +1,303 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Тег DIV</title>
+  <style type="text/css">
+
+  .AllClick{
+    width: 312.5px; 
+    height: 312.5px;
+    position: absolute;
+    margin: 0 auto;
+    float: left;
+   }  
+     
+   .Allblock{
+    width: 400px; 
+    height: 400px;
+    background: #ccc;
+    position: relative;
+    margin: 0 auto;
+    border: solid 1px black;
+   }  
+
+   .block{
+    text-align:  center;
+    font-size: 300%; 
+    width: 100px;
+    height: 100px;
+    background: green;
+    float: left;
+   }
+
+   #b1,#b4,#b7,#b10,#b13,#b16{
+    background: grey; 
+   }
+   #b2,#b5,#b8,#b11,#b14{
+    background: blue; 
+   }
+   #b3,#b6,#b9,#b12{
+    background: green; 
+   }
+
+   .button {
+    width: 25px;
+    height: 25px;
+    background: red;
+    position: relative;
+    top: 12.5px;
+    left: 87.5px;
+    margin: 75px 75px 0px 0px;
+    float: left;
+  }
+
+  .SystemButton {
+    width: 100px; 
+    height: 25px;
+    background: #ccc;
+    margin: 20px 590px;
+    border: solid 1px black;
+  }
+
+  #timercount {
+    width: 100px; 
+    height: 25px;
+    background: #ccc;
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    font-size: 150%; 
+    text-align:  center;
+    border: solid 1px black;
+  }
+
+  </style> 
+  </head>
+  <body>
+
+  
+  <div class = "Allblock">
+  <div class = "block" id = "b1"></div> 
+  <div class = "block" id = "b2">  </div> 
+  <div class = "block" id = "b3">  </div> 
+  <div class = "block" id = "b4"> </div> 
+  <div class = "block" id = "b5">  </div> 
+  <div class = "block" id = "b6"> </div> 
+  <div class = "block" id = "b7">  </div> 
+  <div class = "block" id = "b8">  </div> 
+  <div class = "block" id = "b9">  </div> 
+  <div class = "block" id = "b10"> </div> 
+  <div class = "block" id = "b11">  </div> 
+  <div class = "block" id = "b12">  </div> 
+  <div class = "block" id = "b13"> </div> 
+  <div class = "block" id = "b14">  </div> 
+  <div class = "block" id = "b15">  </div> 
+  <div class = "block" id = "b16"> </div> 
+
+  <div class = "AllClick">
+  <input type="button" onclick="blockchange1()" class = "button" id = "button1">  
+  <input type="button" onclick="blockchange2()" class = "button" id = "button2"> 
+  <input type="button" onclick="blockchange3()" class = "button" id = "button3"> 
+  <input type="button" onclick="blockchange4()" class = "button" id = "button4"> 
+  <input type="button" onclick="blockchange5()" class = "button" id = "button5"> 
+  <input type="button" onclick="blockchange6()" class = "button" id = "button6"> 
+  <input type="button" onclick="blockchange7()" class = "button" id = "button7"> 
+  <input type="button" onclick="blockchange8()" class = "button" id = "button8"> 
+  <input type="button" onclick="blockchange9()" class = "button" id = "button9"> 
+  </div>
+
+  </div>
+  
+  <input value="Нова гра" onclick="update()" type="button" class = "SystemButton"> 
+  <div id = "timercount"> </div>
+
+  <script> 
+
+
+    var array = ["А","Б","В","Г","Ґ","Д","Е","Є","Ж","З","И","І","Ї","Й","К","Л"];
+    var array1 = ["А","Б","В","Г","Ґ","Д","Е","Є","Ж","З","И","І","Ї","Й","К","Л"];  
+    update();
+
+
+
+
+    var timers = 0;
+    setInterval(function() {
+     timers++;
+    document.getElementById("timercount").innerHTML = timers; 
+    }, 1000);
+
+
+    function update (){
+    shuffle(array);
+    timers = 0;
+    document.getElementById("timercount").innerHTML = timers; 
+    for (var j = 1; j < 17; j++){
+    document.getElementById("b" + j).innerHTML = array[j-1];}
+    }
+
+    function compareFunc() {
+      for(var compare = 0; compare < 16; compare++){
+        if(array[compare] !== array1[compare]){
+          return;
+        }
+      }
+      alert("Гра пройдена");
+      update();
+    }
+    
+    function shuffle(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var num = Math.floor(Math.random() * (i + 1));
+        var d = array[num];
+        array[num] = array[i];
+        array[i] = d;
+    }
+    return array;
+    }
+    
+    function blockchange1() {
+      for (var i = 0; i < 5; i = i + 4){
+        var buf1 = array[i];
+        array[i] = array[1+i];
+        array[1+i] = buf1;
+      }
+      var buf2 = array[0];
+      array[0] = array[5];
+      array[5] = buf2;
+      for (var change = 1; change < 6; change = change + 4){
+      document.getElementById("b" + change).innerHTML = array[change - 1];
+      document.getElementById("b" + (change + 1)).innerHTML = array[change];}
+      compareFunc();
+    }
+
+    function blockchange2() {
+      for (var i = 1; i < 6; i = i + 4){
+        var buf1 = array[i];
+        array[i] = array[i+1];
+        array[i+1] = buf1;
+      }
+      var buf2 = array[1];
+      array[1] = array[6];
+      array[6] = buf2;
+      for (var change = 2; change < 7; change = change + 4){
+      document.getElementById("b" + change).innerHTML = array[change - 1];
+      document.getElementById("b" + (change + 1)).innerHTML = array[change];}
+      compareFunc();
+    }
+
+    function blockchange3() {
+      for (var i = 2; i < 7; i = i + 4){
+        var buf1 = array[i];
+        array[i] = array[i+1];
+        array[i+1] = buf1;
+      }
+      var buf2 = array[2];
+      array[2] = array[7];
+      array[7] = buf2;
+      for (var change = 3; change < 8; change = change + 4){
+      document.getElementById("b" + change).innerHTML = array[change - 1];
+      document.getElementById("b" + (change + 1)).innerHTML = array[change];}
+      compareFunc();
+    }
+
+    function blockchange4() {
+      for (var i = 4; i < 9; i = i + 4){
+        var buf1 = array[i];
+        array[i] = array[i+1];
+        array[i+1] = buf1;
+      }
+      var buf2 = array[4];
+      array[4] = array[9];
+      array[9] = buf2;
+      for (var change = 5; change < 10; change = change +4){
+      document.getElementById("b" + change).innerHTML = array[change - 1];
+      document.getElementById("b" + (change + 1)).innerHTML = array[change];}
+      compareFunc();
+    }
+
+    function blockchange5() {
+      for (var i = 5; i < 10; i = i + 4){
+        var buf1 = array[i];
+        array[i] = array[i+1];
+        array[i+1] = buf1;
+      }
+      var buf2 = array[5];
+      array[5] = array[10];
+      array[10] = buf2;
+      for (var change = 6; change < 11; change = change + 4){
+      document.getElementById("b" + change).innerHTML = array[change - 1];
+      document.getElementById("b" + (change + 1)).innerHTML = array[change];}
+      compareFunc();
+    }
+
+    function blockchange6() {
+      for (var i = 6; i < 11; i = i + 4){
+        var buf1 = array[i];
+        array[i] = array[i+1];
+        array[i+1] = buf1;
+      }
+      var buf2 = array[6];
+      array[6] = array[11];
+      array[11] = buf2;
+      for (var change = 7; change < 12; change = change +4){
+      document.getElementById("b" + change).innerHTML = array[change - 1];
+      document.getElementById("b" + (change + 1)).innerHTML = array[change];}
+      compareFunc();
+    }
+
+    function blockchange7() {
+      for (var i = 8; i < 13; i = i + 4){
+        var buf1 = array[i];
+        array[i] = array[i+1];
+        array[i+1] = buf1;
+      }
+      var buf2 = array[8];
+      array[8] = array[13];
+      array[13] = buf2;
+      for (var change = 9; change < 14; change = change +4){
+      document.getElementById("b" + change).innerHTML = array[change - 1];
+      document.getElementById("b" + (change + 1)).innerHTML = array[change];}
+      compareFunc();
+    }
+
+    function blockchange8() {
+      for (var i = 9; i < 14; i = i + 4){
+        var buf1 = array[i];
+        array[i] = array[i+1];
+        array[i+1] = buf1;
+      }
+      var buf2 = array[9];
+      array[9] = array[14];
+      array[14] = buf2;
+      for (var change = 10; change < 15; change = change +4){
+      document.getElementById("b" + change).innerHTML = array[change - 1];
+      document.getElementById("b" + (change + 1)).innerHTML = array[change];}
+      compareFunc();
+    }
+
+    function blockchange9() {
+      for (var i = 10; i < 15; i = i + 4){
+        var buf1 = array[i];
+        array[i] = array[i+1];
+        array[i+1] = buf1;
+      }
+      var buf2 = array[10];
+      array[10] = array[15];
+      array[15] = buf2;
+      for (var change = 11; change < 16; change = change +4){
+      document.getElementById("b" + change).innerHTML = array[change - 1];
+      document.getElementById("b" + (change + 1)).innerHTML = array[change];}
+      compareFunc();
+    }
+
+    
+  
+    
+  
+
+  </script>
+
+ </body>
+</html>
